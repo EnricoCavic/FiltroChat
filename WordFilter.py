@@ -10,26 +10,27 @@ with open(PATH,'r', encoding=ENCODING) as file:
 NICKNAME = input('Entre com seu nickname:')
 
 def censorText(_textToCensor):
-    global currentInfractions 
-
+    global current_infractions 
+    casefold_text = _textToCensor.casefold()
+    
     for term in termList:
-        if(term not in _textToCensor):continue
+        if(term not in casefold_text):continue
 
-        currentInfractions += 1
+        current_infractions += 1
         term_len = len(term)
-        line_index_in_text = _textToCensor.index(term)
+        line_index_in_text = casefold_text.index(term)
         
-        censoredText = _textToCensor[:line_index_in_text]
+        censored_text = _textToCensor[:line_index_in_text]
         for i in term:
-            censoredText += '*'
+            censored_text += '*'
         
-        censoredText += _textToCensor[line_index_in_text + term_len:]
-        _textToCensor = censoredText
+        censored_text += _textToCensor[line_index_in_text + term_len:]
+        _textToCensor = censored_text
 
     return _textToCensor
 
-currentInfractions = 0
-while currentInfractions < MAXIMUM_INFRACTIONS:
+current_infractions = 0
+while current_infractions < MAXIMUM_INFRACTIONS:
     print('---=//=---' * 5)
     input_text = input(f'[{NICKNAME}]:')
 
