@@ -4,10 +4,10 @@ import os
 def clear():
     os.system('cls')
 
-PATH = 'palavras.txt'
-ENCODING = 'utf-8'
 MAXIMUM_INFRACTIONS = 10
 
+PATH = 'palavras.txt'
+ENCODING = 'utf-8'
 clear()
 with open(PATH,'r', encoding=ENCODING) as file:
     termList = file.read().splitlines()
